@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI timerText;
     public PlayerController playerController;
+    public GameObject youLose;
+    public GameObject youWin;
 
     void Start()
     {
@@ -80,11 +82,14 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         Debug.Log("You win!");
+        youWin.gameObject.SetActive(true);
     }
 
     void LoseGame()
     {
         gameOver = true;
         Debug.Log("Game Over!");
+        youLose.gameObject.SetActive(true);
+        
     }
 }

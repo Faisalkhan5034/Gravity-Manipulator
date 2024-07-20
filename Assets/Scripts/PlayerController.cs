@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
     private float forwardInput;
     private Rigidbody playerRb;
     private Animator playerAnime;
-    private float jumpForce = 10f;
+    private float jumpForce = 8f;
 
 
     [HideInInspector]
     public bool isOnGround;
+    public Transform playerReference;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerRb.AddForce(playerReference.up * jumpForce, ForceMode.Impulse);
             playerAnime.SetBool("Fall", true);
         }
         else
@@ -60,9 +61,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.CompareTag("Ground"))
+        if (collision.collider.CompareTag("Ground") && !isOnGround)
         {
             isOnGround = true;
         }

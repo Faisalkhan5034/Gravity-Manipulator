@@ -32,13 +32,13 @@ public class GravityManipulator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             gravityDirection = player.parent.forward * 9.81f;
-            playerRotation = player.parent.eulerAngles + new Vector3(90, 0, 0);
+            playerRotation = player.parent.eulerAngles + new Vector3(-90, 0, 0);
             HologramVisibility(true, new Vector3(0, 1.5f, -2f));
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             gravityDirection = player.parent.forward * -9.81f;
-            playerRotation = player.parent.eulerAngles + new Vector3(-90, 0, 0);
+            playerRotation = player.parent.eulerAngles + new Vector3(90, 0, 0);
             HologramVisibility(true, new Vector3(0, 1.5f, 2f));
         }
 
